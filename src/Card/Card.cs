@@ -12,7 +12,7 @@ namespace CardNovel.Cards
         [Export]
         public string Title;
 
-        private Container infoContainer;
+        private AnimationPlayer infoContainer;
 
         public override void _Ready()
         {
@@ -24,17 +24,17 @@ namespace CardNovel.Cards
             var art = this.GetNode<TextureRect>("ViewRoot/ArtContainer/CardArt");
             art.Texture = this.Art;
 
-            this.infoContainer = this.GetNode<Container>("ViewRoot/InfoContainer");
+            this.infoContainer = this.GetNode<AnimationPlayer>("ViewRoot/InfoContainer/AnimationPlayer");
         }
 
         public void ArtHoverHandlerMouseEntered()
         {
-            this.infoContainer.Show();
+            this.infoContainer.Play("Appear");
         }
 
         public void ArtHoverHandlerMouseExited()
         {
-            this.infoContainer.Hide();
+            this.infoContainer.Play("Disappear");
         }
 
         [Conditional("DEBUG")]
