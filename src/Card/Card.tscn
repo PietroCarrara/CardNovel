@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Card/Card.cs" type="Script" id=1]
+[ext_resource path="res://src/HoverHandler/HoverHandler.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 59.9351, 84.7967 )
+
+[node name="Card" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ArtArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArtArea"]
+position = Vector2( 62.6685, 87.8609 )
+shape = SubResource( 1 )
+
+[node name="ViewRoot" type="Node2D" parent="."]
+
+[node name="ArtContainer" type="PanelContainer" parent="ViewRoot"]
+margin_right = 125.0
+margin_bottom = 175.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CardArt" type="TextureRect" parent="ViewRoot/ArtContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 118.0
+margin_bottom = 168.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 7
+
+[node name="ArtHoverHandler" parent="ViewRoot/ArtContainer" instance=ExtResource( 2 )]
+Width = 125.0
+Height = 175.0
+FillParent = false
+DrawDebug = true
+
+[node name="InfoContainer" type="PanelContainer" parent="ViewRoot"]
+visible = false
+margin_left = -91.0601
+margin_top = 0.370094
+margin_right = -1.06013
+margin_bottom = 28.3701
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CardTitle" type="Label" parent="ViewRoot/InfoContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 83.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+text = "UNDEFINED"
+max_lines_visible = 1
+[connection signal="input_event" from="ArtArea" to="." method="OnArtAreaInputEvent"]
+[connection signal="mouse_entered" from="ArtArea" to="." method="_on_ArtArea_mouse_entered"]
+[connection signal="MouseEntered" from="ViewRoot/ArtContainer/ArtHoverHandler" to="." method="ArtHoverHandlerMouseEntered"]
+[connection signal="MouseExited" from="ViewRoot/ArtContainer/ArtHoverHandler" to="." method="ArtHoverHandlerMouseExited"]
