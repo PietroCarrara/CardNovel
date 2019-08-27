@@ -14,6 +14,12 @@ namespace CardNovel.Cards
 
         private AnimationPlayer infoContainer;
 
+
+        public virtual void OnPlay()
+        {}
+        public virtual void OnDiscard()
+        {}
+
         public override void _Ready()
         {
             validateAtrributes();
@@ -25,6 +31,12 @@ namespace CardNovel.Cards
             art.Texture = this.Art;
 
             this.infoContainer = this.GetNode<AnimationPlayer>("ViewRoot/InfoContainer/AnimationPlayer");
+        }
+
+        public void SetResource(CardInfo info)
+        {
+            this.Art = info.Art;
+            this.Title = info.Title;
         }
 
         public void ArtHoverHandlerMouseEntered()

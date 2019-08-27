@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.9351, 84.7967 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Appear"
 length = 0.25
 tracks/0/type = "value"
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Disappear"
 length = 0.25
 tracks/0/type = "value"
@@ -38,8 +38,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 
 [node name="Card" type="Node2D"]
 script = ExtResource( 1 )
@@ -70,16 +69,14 @@ expand = true
 stretch_mode = 7
 
 [node name="ArtHoverHandler" parent="ViewRoot/ArtContainer" instance=ExtResource( 2 )]
-Width = 125.0
-Height = 175.0
-FillParent = false
-DrawDebug = true
 
 [node name="InfoContainer" type="PanelContainer" parent="ViewRoot"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = -91.0
-margin_right = -4.0
-margin_bottom = 28.0
+margin_left = 15.3202
+margin_top = -32.5667
+margin_right = 109.32
+margin_bottom = -4.56672
+grow_horizontal = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -87,16 +84,16 @@ __meta__ = {
 [node name="CardTitle" type="Label" parent="ViewRoot/InfoContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 80.0
+margin_right = 87.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
 max_lines_visible = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ViewRoot/InfoContainer"]
-anims/Appear = SubResource( 3 )
-anims/Disappear = SubResource( 4 )
-anims/Idle = SubResource( 2 )
+anims/Appear = SubResource( 2 )
+anims/Disappear = SubResource( 3 )
+anims/Idle = SubResource( 4 )
 [connection signal="input_event" from="ArtArea" to="." method="OnArtAreaInputEvent"]
 [connection signal="mouse_entered" from="ArtArea" to="." method="_on_ArtArea_mouse_entered"]
 [connection signal="MouseEntered" from="ViewRoot/ArtContainer/ArtHoverHandler" to="." method="ArtHoverHandlerMouseEntered"]

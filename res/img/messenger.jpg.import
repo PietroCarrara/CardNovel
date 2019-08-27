@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/007793.png-6aab090feaa6c6e5f589af12a1ee7134.stex"
+path="res://.import/messenger.jpg-6acb76e8d93ff3f63a5ac656adbbaa69.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://007793.png"
-dest_files=[ "res://.import/007793.png-6aab090feaa6c6e5f589af12a1ee7134.stex" ]
+source_file="res://res/img/messenger.jpg"
+dest_files=[ "res://.import/messenger.jpg-6acb76e8d93ff3f63a5ac656adbbaa69.stex" ]
 
 [params]
 

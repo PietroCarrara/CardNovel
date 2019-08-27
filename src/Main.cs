@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using CardNovel.Cards;
+using CardNovel.Repository;
 
 namespace CardNovel
 {
@@ -14,11 +14,8 @@ namespace CardNovel
 
         public override void _Ready()
         {
-            var card = (Card)this.CardScene.Instance();
-
-            card.Art = this.DefaultArt;
-            card.Title = "Seila :D";
-
+            var cardRepository = CardRepository.GetInstance();
+            var card = cardRepository.GetByName("The Mailman");
             this.AddChild(card);
         }
     }
