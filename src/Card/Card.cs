@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace CardNovel.Cards
 {
-    public class Card : Node2D
+    public class Card : Control
     {
         [Export]
         public Texture Art;
@@ -24,13 +24,13 @@ namespace CardNovel.Cards
         {
             validateAtrributes();
 
-            var title = this.GetNode<Label>("ViewRoot/InfoContainer/CardTitle");
+            var title = this.GetNode<Label>("InfoContainer/CardTitle");
             title.Text = this.Title;
 
-            var art = this.GetNode<TextureRect>("ViewRoot/ArtContainer/CardArt");
+            var art = this.GetNode<TextureRect>("ArtContainer/CardArt");
             art.Texture = this.Art;
 
-            this.infoContainer = this.GetNode<AnimationPlayer>("ViewRoot/InfoContainer/AnimationPlayer");
+            this.infoContainer = this.GetNode<AnimationPlayer>("InfoContainer/AnimationPlayer");
         }
 
         public void SetResource(CardInfo info)
@@ -39,12 +39,12 @@ namespace CardNovel.Cards
             this.Title = info.Title;
         }
 
-        public void ArtHoverHandlerMouseEntered()
+        public void OnMouseEntered()
         {
             this.infoContainer.Play("Appear");
         }
 
-        public void ArtHoverHandlerMouseExited()
+        public void OnMouseExited()
         {
             this.infoContainer.Play("Disappear");
         }
