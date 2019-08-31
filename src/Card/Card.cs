@@ -34,11 +34,13 @@ namespace CardNovel.Cards
 
         public void OnMouseEntered()
         {
+            this.SetAsToplevel(true);
             this.infoContainer.Play("Appear");
         }
 
         public void OnMouseExited()
         {
+            this.SetAsToplevel(false);
             this.infoContainer.Play("Disappear");
         }
 
