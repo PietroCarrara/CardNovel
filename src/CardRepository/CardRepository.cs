@@ -30,7 +30,7 @@ namespace CardNovel.Repository
             var res = GD.Load<CardInfo>($"res://res/cards/{name}.tres");
             var cardScene = (Card)this.cardScene.Instance();
 
-            cardScene.SetResource(res);
+            cardScene.Info = res;
 
             return cardScene;
         }

@@ -6,37 +6,30 @@ namespace CardNovel.Cards
 {
     public class Card : Control
     {
-        [Export]
-        public Texture Art;
-
-        [Export]
-        public string Title;
-
+        private CardInfo info;
         private AnimationPlayer infoContainer;
 
+        [Export]
+        public CardInfo Info
+        {
+            get => info;
+            set
+            {
+                this.info = value;
 
-        public virtual void OnPlay()
-        {}
-        public virtual void OnDiscard()
-        {}
+                var title = this.GetNode<Label>("InfoContainer/CardTitle");
+                title.Text = info.Title;
+
+                var art = this.GetNode<TextureRect>("ArtContainer/CardArt");
+                art.Texture = info.Art;
+            }
+        }
 
         public override void _Ready()
         {
             validateAtrributes();
 
-            var title = this.GetNode<Label>("InfoContainer/CardTitle");
-            title.Text = this.Title;
-
-            var art = this.GetNode<TextureRect>("ArtContainer/CardArt");
-            art.Texture = this.Art;
-
             this.infoContainer = this.GetNode<AnimationPlayer>("InfoContainer/AnimationPlayer");
-        }
-
-        public void SetResource(CardInfo info)
-        {
-            this.Art = info.Art;
-            this.Title = info.Title;
         }
 
         public void OnMouseEntered()
@@ -52,11 +45,11 @@ namespace CardNovel.Cards
         [Conditional("DEBUG")]
         private void validateAtrributes()
         {
-            if (this.Title == "") {
+            if (this.Info.Title == "") {
                 throw new Exception("The card title can't be empty!");
             }
 
-            if (this.Art == null) {
+            if (this.Info.Art == null) {
                 throw new Exception("The card art can't be empty!");
             }
         }
